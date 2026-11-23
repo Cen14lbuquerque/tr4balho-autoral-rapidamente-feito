@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquivo Beyblade Burst | Temporadas 1 e 2</title>
+    <style>
+        /* Reset e Variáveis de Cores Temáticas */
+        :root {
+            --bg-dark: #0b0f19;
+            --bg-card: #151c2c;
+            --primary-blue: #00a8ff;
+            --accent-gold: #fbc531;
+            --accent-red: #e84118;
+            --text-light: #f5f6fa;
+            --text-muted: #a4b0be;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho e Navegação */
+        header {
+            background: linear-gradient(135deg, #091326 0%, #102a5c 100%);
+            border-bottom: 3px solid var(--primary-blue);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-light);
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: rgba(0, 168, 255, 0.2);
+            color: var(--primary-blue);
+        }
+
+        /* Banner Principal (Hero) */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: radial-gradient(circle at center, #192a56 0%, var(--bg-dark) 80%);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            text-shadow: 0 4px 15px rgba(0, 168, 255, 0.4);
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Seções das Temporadas */
+        .season-section {
+            margin-bottom: 5rem;
+            padding-top: 2rem;
+        }
+
+        .season-header {
+            border-left: 6px solid var(--primary-blue);
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .season-header.evolution {
+            border-left-color: var(--accent-red);
+        }
+
+        .season-header h2 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+        }
+
+        .season-header p {
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        /* Grid dos Atos (Início, Meio, Fim) */
+        .acts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .act-card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, border-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .act-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+        }
+
+        .season-section.evolution .act-card:hover {
+            border-color: var(--accent-red);
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: #000;
+            font-weight: 800;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .season-section.evolution .badge {
+            background-color: var(--accent-red);
+            color: #fff;
+        }
+
+        .act-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        .act-card p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            text-align: justify;
+        }
+
+        .highlight-bey {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #06090f;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Bey<span>Burst</span> Wiki</div>
+        <nav>
+            <ul>
+                <li><a href="#temporada1">1ª Temporada</a></li>
+                <li><a href="#temporada2">2ª Temporada (Evolution)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>A Jornada de Valt Aoi</h1>
+        <p>Um resumo completo do início, meio e fim das duas primeiras temporadas que marcaram a nova geração de Beyblade.</p>
+    </section>
+
+    <main class="container">
+
+        <!-- TEMPORADA 1 -->
+        <section id="temporada1" class="season-section">
+            <div class="season-header">
+                <h2>1ª Temporada: Beyblade Burst</h2>
+                <p>O nascimento de uma lenda e a busca pelo topo do Japão</p>
+            </div>
+
+            <div class="acts-grid">
+                <!-- Início -->
+                <article class="act-card">
+                    <span class="badge">Início</span>
+                    <h3>O Sonho na Escola Beigoma</h3>
+                    <p>
+                        Valt Aoi é um garoto energético e apaixonado por Beyblade, mas ainda inexperiente. Ao lado de seu melhor amigo, Shu Kurenai (um dos "Quatro Supremos" do Japão), e de seu Bey do tipo ataque, <strong>Victory Valtryek</strong>, Valt decide participar do Torneio Distrital. Mesmo cometendo erros básicos no começo, sua determinação inspira outros colegas a fundarem o Clube de Beyblade da Escola Beigoma.
+                    </p>
+                    <div class="highlight-bey">
+                        <strong>Destaque:</strong> A criação do Clube de Beyblade e a primeira vitória oficial de Valt.
+                    </div>
+                </article>
+
+                <!-- Meio -->
+                <article class="act-card">
+                    <span class="badge">Meio</span>
+                    <h3>Torneio Nacional por Equipes</h3>
+                    <p>
+                        Após superar as etapas regionais, o Clube de Beyblade de Beigoma avança para o Campeonato Nacional de Equipes. O grupo enfrenta adversários formidáveis como a Academia Rideout, liderada pelo implacável Lui Shirosagi e seu <em>Lost Luinor</em>. Durante essa fase, Valt aprende novas técnicas de lançamento, enquanto Shu luta contra uma grave lesão no ombro e a obsessão de derrotar Lui.
+                    </p>
+                    <div class="highlight-bey">
+                        <strong>Destaque:</strong> A rivalidade intensa contra Lui Shirosagi e o trabalho em equipe.
+                    </div>
+                </article>
+
+                <!-- Fim -->
+                <article class="act-card">
+                    <span class="badge">Fim</span>
+                    <h3>A Final Individual</h3>
+                    <p>
+                        No Torneio Individual Nacional, os laços de amizade são postos à prova. Shu acaba sendo derrotado por Lui na semifinal após seu Bey quebrar. Cabe a Valt chegar à grande final contra Lui Shirosagi. Em uma batalha eletrizante de tirar o fôlego, Valtryek sofre uma rachadura no último segundo e perde por eclosão. Mesmo com o vice-campeonato, Valt ganha o respeito de todo o país e recebe um convite para jogar na Europa.
+                    </p>
+                    <div class="highlight-bey">
+                        <strong>Destaque:</strong> A batalha final épica entre Victory Valtryek e Lost Luinor.
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- TEMPORADA 2 -->
+        <section id="temporada2" class="season-section evolution">
+            <div class="season-header evolution">
+                <h2>2ª Temporada: Beyblade Burst Evolution</h2>
+                <p>O palco mundial, novos rivais e a queda e redenção de um amigo</p>
+            </div>
+
+            <div class="acts-grid">
+                <!-- Início -->
+                <article class="act-card">
+                    <span class="badge">Início</span>
+                    <h3>Chegada à Espanha e o BC Sol</h3>
+                    <p>
+                        Valt viaja para a Espanha para integrar o time europeu <strong>BC Sol</strong>, trazendo consigo a evolução de seu parceiro: <strong>Genesis Valtryek</strong>. Logo na chegada, ele conhece Free De La Hoya, o blader número 1 do mundo, e enfrenta dificuldades para controlar o novo sistema de mola do seu Bey. Enquanto isso, Shu Kurenai desaparece misteriosamente após ir treinar no lendário Snake Pit (Fosso das Serpentes).
+                    </p>
+                    <div class="highlight-bey">
+                        <strong>Destaque:</strong> A estreia de Genesis Valtryek e o encontro com Free De La Hoya.
+                    </div>
+                </article>
+
+                <!-- Meio -->
+                <article class="act-card">
+                    <span class="badge">Meio</span>
+                    <h3>Liga Mundial e o Olho Vermelho</h3>
+                    <p>
+                        O BC Sol disputa a Liga Mundial enfrentando potências como os Raging Bulls e os Royals. Durante as competições, surge um blader mascarado conhecido como <strong>Olho Vermelho</strong>, que utiliza um estilo agressivo e destrutivo. Valt eventualmente descobre a verdade chocante: Olho Vermelho é na verdade Shu Kurenai, que se deixou corromper pela busca obsessiva por poder e pelo desejo de destruir seus rivais.
+                    </p>
+                    <div class="highlight-bey">
+                        <strong>Destaque:</strong> A revelação da identidade de Olho Vermelho e o surgimento de Spryzen Requiem.
+                    </div>
+                </article>
+
+                <!-- Fim -->
+                <article class="act-card">
+                    <span class="badge">Fim</span>
+                    <h3>A Copa Internacional de Bladers</h3>
+                    <p>
+                        Os melhores bladers do planeta se reúnem na Copa Internacional. Totalmente dominado pelo poder sombrio de <em>Spryzen Requiem</em>, Shu derrota até mesmo Free e Lui, avançando para a final contra Valt. Com o Strike God Valtryek, Valt luta não apenas pelo título mundial, mas para salvar a alma do seu melhor amigo. No clímax da batalha, Valt vence, quebra a influência sombria sobre Shu e se torna o Campeão Mundial.
+                    </p>
+                    <div class="highlight-bey">
+                        <strong>Destaque:</strong> A redenção de Shu Kurenai e a consagração de Valt no topo do mundo.
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Projeto Autoral — Resumo de Beyblade Burst (Temporadas 1 e 2) | Desenvolvido em HTML5 & CSS3</p>
+    </footer>
+
+</body>
+</html>
